@@ -1,9 +1,82 @@
-<<<<<<< HEAD
-# Vue 3 + Vite
+Frontend Event Service
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This is the Vue frontend for the Event Service in the Event Ticketing and Venue Management System.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
-=======
-# frontend-event-service
->>>>>>> ddaaa4174c3027f71b97fd5b57b9e01333d99d18
+The frontend communicates with the Event Service backend using:
+
+GET http://localhost:8083/events
+
+The backend returns real PostgreSQL data in JSON format.
+
+Example response:
+
+[
+  {
+    "eventId": 1,
+    "title": "Concert",
+    "description": "Music event",
+    "category": "Music",
+    "status": "DRAFT"
+  }
+]
+Frontend Components
+
+Main frontend files:
+
+src/
+│
+├── components/
+│   └── EventList.vue
+│
+├── App.vue
+└── main.js
+EventList Component
+
+The EventList.vue component:
+
+sends API requests to the backend
+receives JSON responses
+stores data using Vue refs
+dynamically renders event cards
+Run Locally
+
+From the frontend folder:
+
+npm install
+npm run dev
+
+Open:
+
+http://localhost:5173
+Run Backend
+
+The Spring Boot backend must also be running.
+
+Backend endpoint:
+
+http://localhost:8083/events
+
+Start backend:
+
+mvn spring-boot:run
+Docker Support
+
+The backend service supports Docker containerization.
+
+Build Docker image:
+
+docker build -t event-service .
+
+Run Docker container:
+docker run -p 8083:8083 event-service
+Technologies Used
+Vue 3
+Vite
+JavaScript
+Spring Boot
+PostgreSQL
+Docker
+
+Real backend data displayed dynamically.
+Build
+npm run build
